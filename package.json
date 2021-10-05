@@ -1,0 +1,33 @@
+{
+  "name": "charactersonnet-2-api",
+  "version": "1.0.0",
+  "description": "API for the character sonnet 2 website",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CharacterSonnet/CharacterSonnet-2-API.git"
+  },
+  "author": "Benjamin Ibarra and Steven Boston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CharacterSonnet/CharacterSonnet-2-API/issues"
+  },
+  "homepage": "https://github.com/CharacterSonnet/CharacterSonnet-2-API#readme",
+  "dependencies": {
+    "auth0": "^2.36.2",
+    "axios": "^0.22.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "express": "^4.17.1",
+    "graphql": "^15.6.1",
+    "graphql-request": "^3.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.1.3",
+    "mongoose": "^6.0.9",
+    "nodemon": "^2.0.13"
+  }
+}
