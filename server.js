@@ -1,5 +1,5 @@
 'use strict'
-
+//const { graphql, buildSchema } = require('graphql');
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -7,6 +7,8 @@ const cors = require('cors');
 const axios = require('axios');
 app.use(cors());
 app.use(express.json());
+
+const QueryMaker = require('./functions/QueryMaker');
 
 const PORT = process.env.PORT;
 //const MONGODB;
@@ -20,19 +22,13 @@ const { response } = require('express');
 //   console.log('Mongo Online')
 // });
 
-const { graphql, buildSchema } = require('graphql');
-let query = '{classes{name}}';
+let queryString = `query { races { name, languages { name } } }`;
 
 app.get('/graph', async (req, res) => {
-  const result = await axios.post('https://www.dnd5eapi.co/graphql', {
-    query: `classes {name}`,
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+  await QueryMaker(queryString).then(data=>res.send(data));
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   console.log('hit the test route');
   res.send('welcome to the character sonnet 2 API');
 });
@@ -40,16 +36,3 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {console.log(`listening on port ${PORT}`);});
 
 
-
-// fetch(process.env.GraphQLAPI, {
-//   method: "post",
-//   headers: {"Content-Type": "application/json"},
-//   body: JSON.stringify(
-//     {query:`
-//       classes {
-//         name
-//       }
-//     `})
-// })
-// .then(res=>res.json())
-// .then(data=>console.log(data.data));
