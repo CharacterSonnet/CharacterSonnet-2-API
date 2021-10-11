@@ -1,6 +1,95 @@
 //this function takes a classname as input and creates a graphQL querystring that will acquire all the necessary information for the correct class. 
 const classString = (className) => {
-  return `query {class(filter: {name:"${className}"}) { name }}`;  
+  return `
+  query {
+    class(filter:{name:"${className}"}){
+      name
+      hit_die
+      proficiency_choices{
+        choose
+        from{
+          name
+        }
+      }
+      proficiencies{
+        name
+      }
+      saving_throws{
+        name
+      }
+      class_levels{
+        level
+        ability_score_bonuses
+        prof_bonus
+        class_specific{
+          action_surges
+          arcane_recovery_levels
+          aura_range
+          bardic_inspiration_die
+          brutal_critical_dice
+          channel_divinity_charges
+          creating_spell_slots{
+            sorcery_point_cost
+            spell_slot_level
+          }
+          destroy_undead_cr
+          extra_attacks
+          favored_enemies
+          favored_terrain
+          indomitable_uses
+          invocations_known
+          ki_points
+          magical_secrets_max_5
+          magical_secrets_max_7
+          magical_secrets_max_9
+          martial_arts{
+            dice_count
+            dice_value
+          }
+          metamagic_known
+          mystic_arcanum_level_6
+          mystic_arcanum_level_7
+          mystic_arcanum_level_8
+          mystic_arcanum_level_9
+          rage_count
+          rage_damage_bonus
+          sneak_attack{
+            dice_count
+            dice_value
+          }
+          song_of_rest_die
+          sorcery_points
+          unarmored_movement
+          wild_shape_fly
+          wild_shape_max_cr
+          wild_shape_swim
+        }
+        features{
+          name
+          desc
+        }
+        spellcasting{
+          cantrips_known
+          spells_known
+          spell_slots_level_1
+          spell_slots_level_2
+          spell_slots_level_3
+          spell_slots_level_4
+          spell_slots_level_5
+          spell_slots_level_6
+          spell_slots_level_7
+          spell_slots_level_8
+          spell_slots_level_9
+        }
+      }
+      spells{
+        name
+        level
+        desc
+      }
+    }
+  }
+  `;
 };
 
 module.exports = classString;
