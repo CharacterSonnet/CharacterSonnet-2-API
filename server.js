@@ -11,6 +11,7 @@ app.use(express.json());
 const QueryMaker = require('./functions/QueryMaker');
 const ClassString = require('./functions/ClassString');
 const RaceString = require('./functions/RaceString');
+const SubRaceString = require(`./functions/SubRaceString`);
 
 const PORT = process.env.PORT;
 //const MONGODB;
@@ -41,6 +42,12 @@ app.get('/race', async (req, res) => {
   let raceQuery = RaceString(raceName);
   await QueryMaker(raceQuery).then(data=>res.send(data));
 });
+
+app.get('/subRace', async (req, res) =>{
+  let subRaceName = req.query.subRace;
+  let subRaceQuery = SubRaceString(subRaceName);
+  await QueryMaker(subRaceQuery).then(data=>res.send(data));
+})
 
 app.get('/', async (req, res) => {
   console.log('hit the test route');
