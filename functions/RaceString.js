@@ -29,6 +29,7 @@ const raceString = (raceName) => {
               ability_score{
                 name
               }
+              bonus
             }
           }
           starting_proficiencies{
