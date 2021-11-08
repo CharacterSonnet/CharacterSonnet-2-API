@@ -1,7 +1,7 @@
 const subRaceString = (subRaceName) => {
   return `
   query{
-    subraces(filter:{name:"${subRaceName}"}){
+    subraces(filter:{index:"${subRaceName}"}){
       name
       desc
       language_options{
