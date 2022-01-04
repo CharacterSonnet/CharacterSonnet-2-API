@@ -2,7 +2,7 @@
 const raceString = (raceName) => {
     return `
     query{
-        race(filter:{name:"${raceName}"}){
+        race(filter:{index:"${raceName}"}){
           name
           speed
           age
