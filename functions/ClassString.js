@@ -2,7 +2,7 @@
 const classString = (className) => {
   return `
   query {
-    class(filter:{name:"${className}"}){
+    class(filter:{index:"${className}"}){
       name
       hit_die
       proficiency_choices{
